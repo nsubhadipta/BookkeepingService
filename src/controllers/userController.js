@@ -1,5 +1,11 @@
 const User = require('../models/userModel');
 
+//Custom Logger
+const Logger = require('../utils/logger');
+const requestIP = require('request-ip');
+const UAParser = require('ua-parser-js');
+const parser = new UAParser();
+
 exports.register = async function (req, res) {
     const reqBody = req.body;
 
@@ -10,6 +16,9 @@ exports.register = async function (req, res) {
         }
         const saveRecord = await userRecord.save();
         const token = userRecord.toAuthJSON();
+
+        //Custom Logger
+        Logger.addAuditLog(requestIP.getClientIp(req), req.protocol + '://' + req.get('host') + req.originalUrl, "Success", req.originalUrl.split("?").shift(), 'Create', req.method, req.socket.remoteAddress, parser.setUA(req.headers['user-agent']).getOS().name, parser.setUA(req.headers['user-agent']).getOS().version, parser.setUA(req.headers['user-agent']).getBrowser().name, parser.setUA(req.headers['user-agent']).getBrowser().version)
         res.status(200).send({
             status: 1,
             message: "User Created Successfully",
@@ -17,7 +26,8 @@ exports.register = async function (req, res) {
             token: token
         })
     } catch (err) {
-        res.status(400).send({
+        Logger.addAuditLog(requestIP.getClientIp(req), req.protocol + '://' + req.get('host') + req.originalUrl, "Failure", req.originalUrl.split("?").shift(), 'Create', req.method, req.socket.remoteAddress, parser.setUA(req.headers['user-agent']).getOS().name, parser.setUA(req.headers['user-agent']).getOS().version, parser.setUA(req.headers['user-agent']).getBrowser().name, parser.setUA(req.headers['user-agent']).getBrowser().version)
+        res.status(500).send({
             status: 1,
             data: err,
             message: "User Creation Error"
@@ -39,6 +49,7 @@ exports.login = async function (req, res) {
         } else {
             const userInfo = userRecord.toJSON();
             userInfo['token'] = userRecord.toAuthJSON();
+            Logger.addAuditLog(requestIP.getClientIp(req), req.protocol + '://' + req.get('host') + req.originalUrl, "Success", req.originalUrl.split("?").shift(), 'Update', req.method, req.socket.remoteAddress, parser.setUA(req.headers['user-agent']).getOS().name, parser.setUA(req.headers['user-agent']).getOS().version, parser.setUA(req.headers['user-agent']).getBrowser().name, parser.setUA(req.headers['user-agent']).getBrowser().version)
             let resp = {
                 status: 1,
                 message: "Login Successfully",
@@ -47,12 +58,13 @@ exports.login = async function (req, res) {
             res.status(200).send(resp);
         }
     } else {
+        Logger.addAuditLog(requestIP.getClientIp(req), req.protocol + '://' + req.get('host') + req.originalUrl, "Failure", req.originalUrl.split("?").shift(), 'Create', req.method, req.socket.remoteAddress, parser.setUA(req.headers['user-agent']).getOS().name, parser.setUA(req.headers['user-agent']).getOS().version, parser.setUA(req.headers['user-agent']).getBrowser().name, parser.setUA(req.headers['user-agent']).getBrowser().version)
         let resp = {
             status: 1,
             message: "User Login Error",
             error: {},
         }
-        res.status(400).send(resp);
+        res.status(500).send(resp);
     }
 }
 
