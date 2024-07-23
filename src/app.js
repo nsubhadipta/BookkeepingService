@@ -52,7 +52,10 @@ routeFiles.forEach((routeFile) => {
   }
 });
 
-
+// Example route
+app.get('/', (req, res) => {
+    res.send(req.__('user_registered')); // Use req.__ to access translations
+});
 
 app.get("/api/health", (req, res) => {
   try {
