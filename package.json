@@ -1,7 +1,7 @@
 {
   "name": "bookkeepingservice",
   "version": "1.0.0",
-  "description": "Bookkeeping Service",
+  "description": "Bookkeeping Service API - a bookkeeping service where there are three models namely Books, Users and Libraries. A User can either be an Author or a Borrower, a Book is written by some User (Author), and is currently owned by a certain library and is currently borrowed by a certain user (Borrower).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -33,6 +33,7 @@
     "i18n": "^0.15.1",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "mongoose": "^8.5.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
