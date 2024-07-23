@@ -21,7 +21,7 @@ app.use(i18n.init);
 app.use((req, res, next) => {
   const locale = req.headers['accept-language'] || req.query.lang || 'en';
   req.setLocale(locale);
-  console.log('Current locale:', req.getLocale());
+//   console.log('Current locale:', req.getLocale());
   next();
 });
 
@@ -52,7 +52,7 @@ routeFiles.forEach((routeFile) => {
   }
 });
 
-// Example route
+// Test MultiLanguage
 app.get('/', (req, res) => {
     res.send(req.__('user_registered')); // Use req.__ to access translations
 });
