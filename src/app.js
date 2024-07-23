@@ -1,18 +1,30 @@
 "use strict";
 const express = require("express");
 const app = express();
+const path = require('path');
+const fs = require('fs');
+const cors = require("cors");
+const morgan = require('morgan');
 const helmet = require("helmet");
 const connectDB = require("./config/db");
 require("dotenv").config();  
 const PORT = process.env.PORT;
 
-const cors = require("cors");
-const morgan = require('morgan');
 const router = express.Router();
 
+const i18n = require('./i18nConfig');
 
-const path = require('path');
-const fs = require('fs');
+//i18n middleware
+app.use(i18n.init);
+
+// Middleware to set the locale for each request
+app.use((req, res, next) => {
+  const locale = req.headers['accept-language'] || req.query.lang || 'en';
+  req.setLocale(locale);
+  console.log('Current locale:', req.getLocale());
+  next();
+});
+
 
 connectDB();
 
