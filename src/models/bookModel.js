@@ -5,12 +5,12 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  description: { type: String, default: "" },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
+  summary: { type: String, default: "" },
   library: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Library",

@@ -44,16 +44,16 @@ routeFiles.forEach((routeFile) => {
 
 app.get("/api/health", (req, res) => {
   try {
-    res.json({ status: 1, msg: "BookKeeping Service Running.." });
+    res.json({ status: 1, msg: "Bookkeeping Backend Server is Running! 🚀" });
   } catch (error) {
     res.status(403).json({ error: "error occured", message: error });
   }
 });
 
 app.get("*", function (req, res) {
-  res.status(404).send("Invalid URL..");
+  res.status(404).send("🛑 Invalid URL..⚠️🚫");
 });
 
 app.listen(PORT, function () {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`💻 Server running on port ${PORT} 🎉`);
 });
