@@ -3,8 +3,6 @@ const LogModel = require('../models/logModel');
 
 exports.addAuditLog = async (reqUrl , status , route , action , method , ip , os , osVersion , bName, bVersion , deviceType) => {
     try {
-
-        console.log(reqUrl,ip);
         const data = {
             IPAddress: ip,
             URL: reqUrl, 
