@@ -16,7 +16,7 @@ var userSchema = new mongoose.Schema(
     phone: { type: String, required: false },
     address: { type: String, required: false },
     description: { type: String, default: "" },
-    thumbnail: { type: String, default: "nopic.jpg" },
+    profilePic: { type: String, default: "nopic.jpg" },
     deleted: { type: Boolean, default: false },
     active: { type: String, default: true },
   },

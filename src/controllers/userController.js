@@ -42,7 +42,7 @@ exports.login = async function (req, res) {
         if (!userRecord.validPassword(reqBody.password)) {
             let resp = {
                 status: 1,
-                message: "Invalid User ID and Password",
+                message: req.__('invalid_credentials'),
                 error: "Invalid User ID and Password"
             }
             res.status(400).send(resp);
@@ -51,8 +51,8 @@ exports.login = async function (req, res) {
             userInfo['token'] = userRecord.toAuthJSON();
             Logger.addAuditLog(requestIP.getClientIp(req), req.protocol + '://' + req.get('host') + req.originalUrl, "Success", req.originalUrl.split("?").shift(), 'Update', req.method, req.socket.remoteAddress, parser.setUA(req.headers['user-agent']).getOS().name, parser.setUA(req.headers['user-agent']).getOS().version, parser.setUA(req.headers['user-agent']).getBrowser().name, parser.setUA(req.headers['user-agent']).getBrowser().version)
             let resp = {
-                status: 1,
-                message: "Login Successfully",
+                status: 2,
+                message: req.__('login_successful'),
                 data: userInfo
             }
             res.status(200).send(resp);

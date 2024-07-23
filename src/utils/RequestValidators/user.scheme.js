@@ -7,6 +7,7 @@ const userSchema = {
     role: Joi.string().valid("Author", "Borrower").required(),
     password: Joi.string().max(50).required(),
     description: Joi.string().allow(null, "").optional(),
+    // profilePic: Joi.string().allow(null, "").optional(),
   }),
 
   login: Joi.object().keys({
