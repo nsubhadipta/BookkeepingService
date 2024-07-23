@@ -1,21 +1,10 @@
 const LogModel = require('../models/logModel');
 
-exports.addAuditLog = async (logDetails) => {
-    try {
-        const {
-            reqUrl,
-            status,
-            route,
-            action,
-            method,
-            ip,
-            os,
-            osVersion,
-            bName,
-            bVersion,
-            deviceType
-        } = logDetails;
 
+exports.addAuditLog = async (reqUrl , status , route , action , method , ip , os , osVersion , bName, bVersion , deviceType) => {
+    try {
+
+        console.log(reqUrl,ip);
         const data = {
             IPAddress: ip,
             URL: reqUrl, 
@@ -29,11 +18,10 @@ exports.addAuditLog = async (logDetails) => {
             Method: method,
             Status: status, 
             route: route,
-        };
-
-        const logRecord = new LogModel(data);
-        await logRecord.save();      
+        }
+        const LogRecord = new LogModel(data);
+        await LogRecord.save();      
     } catch (e) { 
         console.error(e);
     }
-};
+}
