@@ -1,7 +1,7 @@
 # Bookkeeping Service API
-Welcome to the Bookkeeping Service repository! The Bookkeeping Service API is a Node.js application built with Express and MongoDB that manages books, users, and libraries. Users can be either authors or borrowers, and books are associated with specific authors and libraries. The API includes authentication and authorization features, as well as multilingual support for error and success messages.
+The Bookkeeping Service API is a Node.js application built with Express and MongoDB. It efficiently manages books, users, and libraries. In this system, users can have roles as either authors or borrowers. Each book is written by an author and is owned by a specific library. Books can also be borrowed by users who act as borrowers. The API provides robust authentication and authorization features, along with multilingual support for error and success messages.
 
-A bookkeeping service where there are three models namely Books, Users and Libraries. A User can either be an Author or a Borrower, a Book is written by some User (Author), and is currently owned by a certain library and is currently borrowed by a certain user (Borrower).
+The application models three main entities: **Books**, **Users**, and **Libraries**. Users can be categorized into two roles: **Authors**, who write books, and **Borrowers**, who borrow books. Each book is linked to an author, associated with a library that owns it, and can be currently borrowed by a borrower.
 
 
 ## Features
