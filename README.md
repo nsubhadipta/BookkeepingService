@@ -17,8 +17,8 @@ The application models three main entities: **Books**, **Users**, and **Librarie
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Running the Application](#running-the-application)
+- [API Endpoints](#api-endpoints)
 - [Usage](#usage)
-<!-- - [API Endpoints](#api-endpoints) -->
 
 ## Installation
 
@@ -43,6 +43,7 @@ cd BookkeepingService
 npm install
 ```
 
+
 ## Configuration
 ### Environment Variables
 Create a `.env` file in the root directory and add the following configuration:
@@ -64,6 +65,32 @@ npm run start
 ```
 
 The server will start on http://localhost:9000.
+
+
+## API Endpoints
+### Books
+- GET `/api/books` - Retrieve a list of all books
+- GET `/api/books/:id` - Retrieve details of a specific book
+- POST `/api/books` - Create a new book entry
+- PUT `/api/books/:id` - Update details of a specific book
+- DELETE `/api/books/:id` - Delete a book by its ID
+### Users
+- POST `/api/users/register` - Register a new user
+- POST `/api/users/login` - Authenticate user and generate JWT token
+### Borrowing
+- POST `/api/borrow` - Borrow a book
+- PUT `/api/return/:id` - Return a borrowed book
+### Libraries
+- GET `/api/libraries` - Retrieve a list of all libraries
+- GET `/api/libraries/:id` - Retrieve details of a specific library
+- POST `/api/libraries` - Create a new library
+- PUT `/api/libraries/:id` - Update details of a specific library
+- DELETE `/api/libraries/:id` - Delete a library by its ID
+### Library Inventory
+- GET `/api/libraries/:id/inventory` - Retrieve a list of books available in a specific library
+- POST `/api/libraries/:id/inventory` - Add a book to the inventory of a specific library
+- DELETE `/api/libraries/:id/inventory/:bookId` - Remove a book from the inventory
+
 
 ## Usage
 ### Authentication
