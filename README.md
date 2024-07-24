@@ -32,6 +32,8 @@ The application models three main entities: **Books**, **Users**, and **Librarie
 
 ```bash
 git clone https://github.com/nsubhadipta/BookkeepingService.git
+```
+```bash
 cd BookkeepingService
 ```
 
@@ -58,7 +60,7 @@ Replace the placeholder values with your actual MongoDB URI and Firebase credent
 
 ### Start the Server
 ```bash
-npm start
+npm run start
 ```
 
 The server will start on http://localhost:9000.
