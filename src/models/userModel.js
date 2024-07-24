@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();  
 
 const userSchema = new mongoose.Schema(
   {
@@ -45,7 +46,7 @@ userSchema.methods.generateJWT = function () {
 
       exp: parseInt(expirationDate.getTime() / 1000, 10),
     },
-    "(m2H:)1=G:4`?|w"
+    process.env.JWT_SECRET
   );
 };
 userSchema.methods.toAuthJSON = function () {

@@ -3,7 +3,6 @@ const _ = require("lodash");
 const User = require("../models/userModel");
 const Book = require("../models/bookModel");
 require("dotenv").config();  
-// process.env.JWT_SECRET
 
 
 exports.grantAccess = function (modName, permName) {
@@ -15,7 +14,8 @@ exports.grantAccess = function (modName, permName) {
           .status(401)
           .send({ status: 401, message: "Access Denied: No Token Provided!" });
       try {
-        const decoded = jwt.verify(token, "(m2H:)1=G:4`?|w");
+        console.log(process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         if (decoded) {
           const userData = await User.findOne({ _id: decoded.id });
 
