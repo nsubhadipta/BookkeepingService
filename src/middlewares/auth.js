@@ -20,7 +20,10 @@ exports.grantAccess = function (modName, permName) {
           const userData = await User.findOne({ _id: decoded.id });
 
           if (userData) {
-            req.authID = decoded.id;
+            req.user = {
+              id: decoded.id,
+              role: decoded.role,
+            };
             next();
           } else {
             res.status(401).send({

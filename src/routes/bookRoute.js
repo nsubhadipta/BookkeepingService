@@ -8,11 +8,11 @@ module.exports = (router) => {
     // Books API
     router.get('/books', auth.grantAccess(), bookController.getAllBooks);
     router.get('/books/:id', auth.grantAccess(), bookController.getBookById);
-    router.post('/books', auth.grantAccess(), middleware(schemas.bookAdd),  bookController.createBook);
-    router.put('/books/:id', auth.grantAccess(), middleware(schemas.bookEdit),  bookController.updateBook);
-    router.delete('/books/:id', auth.grantAccess(),  bookController.deleteBook);
+    router.post('/books', auth.grantAccess(),  middleware(schemas.bookAdd),  bookController.createBook);
+    router.put('/books/:id', auth.grantAccess(), auth.authorize("Author"), middleware(schemas.bookEdit),  bookController.updateBook);
+    router.delete('/books/:id', auth.grantAccess(), auth.authorize("Author"),  bookController.deleteBook);
     
     // Borrowing API
-    router.post('/borrow', auth.grantAccess(),   bookController.borrowBook);
-    router.put('/return/:id', auth.grantAccess(),  bookController.returnBook);
+    router.post('/borrow', auth.grantAccess(), auth.authorize("Borrower"),  bookController.borrowBook);
+    router.put('/return/:id', auth.grantAccess(), auth.authorize("Borrower"),  bookController.returnBook);
 };

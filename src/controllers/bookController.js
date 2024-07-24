@@ -9,7 +9,12 @@ exports.getAllBooks = async (req, res) => {
       .populate('author', 'name')
       .populate('borrower', 'name')
       .populate('library', 'name');
-    res.json(books);
+    // res.json(books);
+    res.status(200).json({
+      success: true,
+      books,
+      message: "Data Fetched Successfully",
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -45,10 +50,10 @@ exports.getBookById = async (req, res) => {
 // Create a new book
 exports.createBook = async (req, res) => {
   try {
-    const { title, author, library } = req.body;
+    const { title, author,summary, library } = req.body;
 
     const authorUser = await User.findById(author);
-    if (!authorUser || authorUser.role !== 'author') {
+    if (!authorUser || authorUser.role !== 'Author') {
       return res.status(400).json({
         success: false,
         message: req.__('invalid_author'),
@@ -65,6 +70,7 @@ exports.createBook = async (req, res) => {
 
     const book = new Book({
       title,
+      summary,
       author,
       library,
       coverImage: "nocoverPic.jpg",
@@ -91,7 +97,7 @@ exports.createBook = async (req, res) => {
 // Update a book by ID
 exports.updateBook = async (req, res) => {
   try {
-    const { title, author, library } = req.body;
+    const { title, author, summary, library} = req.body;
     const book = await Book.findById(req.params.id);
 
     if (!book) {
@@ -103,6 +109,7 @@ exports.updateBook = async (req, res) => {
 
     book.title = title || book.title;
     book.author = author || book.author;
+    book.summary = summary || book.summary;
     book.library = library || book.library;
 
     await book.save();
