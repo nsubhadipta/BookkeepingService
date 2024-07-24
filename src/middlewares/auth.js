@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 const User = require("../models/userModel");
+const Book = require("../models/bookModel");
 require("dotenv").config();  
 // process.env.JWT_SECRET
 
@@ -50,5 +51,26 @@ exports.grantAccess = function (modName, permName) {
     }
   };
 };
+
+exports.authorizeLibraryActions = async (req, res, next) => {
+  try {
+    const bookId = req.body.bookId || req.params.bookId;
+    const book = await Book.findById(bookId);
+
+    if (!book) {
+      return res.status(404).json({ message: 'Book not found.' });
+    }
+
+    // Check if the authenticated user is the author of the book
+    if (book.author.toString() !== req.user.id) {
+      return res.status(403).json({ message: 'Access denied. You are not the author of this book.' });
+    }
+
+    next();
+  } catch (err) {
+    res.status(500).json({ message: 'Server error.' });
+  }
+};
+
 
 module.exports = exports;
