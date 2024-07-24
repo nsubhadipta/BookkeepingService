@@ -55,9 +55,9 @@ routeFiles.forEach((routeFile) => {
 
 
 // // Test MultiLanguage
-// app.get('/', (req, res) => {
-//     res.send(req.__('user_registered')); // Use req.__ to access translations
-// });
+app.get('/', (req, res) => {
+    res.send(req.__('user_registered')); // Use req.__ to access translations
+});
 
 app.get("/api/health", (req, res) => {
   try {
