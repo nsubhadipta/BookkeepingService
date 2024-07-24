@@ -107,7 +107,7 @@ exports.updateLibrary = async (req, res) => {
 // Delete a library by ID
 exports.deleteLibrary = async (req, res) => {
   try {
-    const library = await Library.findByIdAndRemove(req.params.id);
+    const library = await Library.findByIdAndDelete(req.params.id);
 
     if (!library) {
       return res.status(404).json({

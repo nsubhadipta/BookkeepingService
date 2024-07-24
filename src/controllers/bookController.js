@@ -123,7 +123,7 @@ exports.updateBook = async (req, res) => {
 // Delete a book by ID
 exports.deleteBook = async (req, res) => {
   try {
-    const book = await Book.findByIdAndRemove(req.params.id);
+    const book = await Book.findByIdAndDelete(req.params.id);
 
     if (!book) {
       return res.status(404).json({
