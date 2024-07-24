@@ -72,5 +72,14 @@ exports.authorizeLibraryActions = async (req, res, next) => {
   }
 };
 
+exports.authorize = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({ message: 'User not authorized' });
+    }
+    next();
+  };
+};
+
 
 module.exports = exports;
