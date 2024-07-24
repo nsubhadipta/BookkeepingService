@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
-var bcrypt = require("bcryptjs");
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-var userSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
@@ -41,6 +41,7 @@ userSchema.methods.generateJWT = function () {
   return jwt.sign(
     {
       id: this._id,
+      role: this.role,
 
       exp: parseInt(expirationDate.getTime() / 1000, 10),
     },
@@ -50,6 +51,7 @@ userSchema.methods.generateJWT = function () {
 userSchema.methods.toAuthJSON = function () {
   return {
     _id: this._id,
+    role: this.role,
     token: this.generateJWT(),
   };
 };
