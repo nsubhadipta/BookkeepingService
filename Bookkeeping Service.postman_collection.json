@@ -1,0 +1,583 @@
+{
+	"info": {
+		"_postman_id": "8f683f78-bf56-4334-aba2-70c3df5df3a9",
+		"name": "Bookkeeping Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8598686"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Subhadipta Nayak\",\r\n    \"email\":\"nsubhadipta@gmail.com\",\r\n    \"role\":\"Author\",\r\n    \"password\":\"Admin@2020\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "hi",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"nsubhadipta@gmail.com\",\r\n    \"password\":\"Admin@2020\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Libraries",
+			"item": [
+				{
+					"name": "Create Library",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjAwNTcsImlhdCI6MTcyMTgzMzY1N30.lwRsNaW8GzIbbCIt8bo4aOqO-3oTHKBoGW7uaSvt_uQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Novel Nexus\",\r\n    \"address\":\"Bhubaneswar, Odisha, 751024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/libraries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"libraries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Library",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjEwMDcsImlhdCI6MTcyMTgzNDYwN30.oAliNYvbVlVYDXf5VJna9mZwgcdOyXjBk-E2yMZrqNw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/libraries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"libraries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Library By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjEwMDcsImlhdCI6MTcyMTgzNDYwN30.oAliNYvbVlVYDXf5VJna9mZwgcdOyXjBk-E2yMZrqNw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/libraries/66a11f3dec446511df5d9fd7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"libraries",
+								"66a11f3dec446511df5d9fd7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Library By Id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjEwMDcsImlhdCI6MTcyMTgzNDYwN30.oAliNYvbVlVYDXf5VJna9mZwgcdOyXjBk-E2yMZrqNw",
+								"type": "text"
+							},
+							{
+								"key": "accept-language",
+								"value": "hi",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Novel Nexus 007\",\r\n    \"address\":\"KIIT Square, Bhubaneswar, Odisha, 751024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/libraries/66a11a25f72579308b4eb821",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"libraries",
+								"66a11a25f72579308b4eb821"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Library",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjEwMDcsImlhdCI6MTcyMTgzNDYwN30.oAliNYvbVlVYDXf5VJna9mZwgcdOyXjBk-E2yMZrqNw",
+								"type": "text"
+							},
+							{
+								"key": "accept-language",
+								"value": "hi",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/libraries/66a11a25f72579308b4eb821",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"libraries",
+								"66a11a25f72579308b4eb821"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Book To Library ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjQ4NDQsImlhdCI6MTcyMTgzODQ0NH0.7b5KI9xpw568q4uAu4A2Tu3xsAqBtAl3CDeMDlfTDbY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":\"66a12ba206d8e6e6ce4b17e0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/libraries/66a11f3dec446511df5d9fd7/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"libraries",
+								"66a11f3dec446511df5d9fd7",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove Book From Library",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjgwODIsImlhdCI6MTcyMTg0MTY4Mn0.0O5PevxWJtm0AOt6ijz9iLC8GE382lLw7VM_Sbh3t2k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/libraries/66a11f3dec446511df5d9fd7/inventory/66a12ba206d8e6e6ce4b17e0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"libraries",
+								"66a11f3dec446511df5d9fd7",
+								"inventory",
+								"66a12ba206d8e6e6ce4b17e0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Library Inventory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjgwODIsImlhdCI6MTcyMTg0MTY4Mn0.0O5PevxWJtm0AOt6ijz9iLC8GE382lLw7VM_Sbh3t2k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/libraries/66a11f3dec446511df5d9fd7/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"libraries",
+								"66a11f3dec446511df5d9fd7",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Create Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjQ4NDQsImlhdCI6MTcyMTgzODQ0NH0.7b5KI9xpw568q4uAu4A2Tu3xsAqBtAl3CDeMDlfTDbY",
+								"type": "text"
+							},
+							{
+								"key": "accept-language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Nayax Book\",\r\n    \"author\": \"66a1185ff72579308b4eb819\",\r\n    \"summary\": \"In a universe where One Nayax.\",\r\n    \"library\": \"66a11f3dec446511df5d9fd7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjM5MzYsImlhdCI6MTcyMTgzNzUzNn0.a70slXZuwmU2NwbMwYCgUmjyJBW6XnIA0FqrnPCLOIM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/books/66a126cf52f6eda19092f068",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"books",
+								"66a126cf52f6eda19092f068"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExN2MwZjcyNTc5MzA4YjRlYjgxMSIsInJvbGUiOiJCb3Jyb3dlciIsImV4cCI6MTcyMTkyNTQwMSwiaWF0IjoxNzIxODM5MDAxfQ.knIHLXuAUn3bH-4rZE_m_308_FZBzfose1vNgT_kl9E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/books/66a1281494d89248e64bb507",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"books",
+								"66a1281494d89248e64bb507"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjgwODIsImlhdCI6MTcyMTg0MTY4Mn0.0O5PevxWJtm0AOt6ijz9iLC8GE382lLw7VM_Sbh3t2k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/books/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book By Id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExODVmZjcyNTc5MzA4YjRlYjgxOSIsInJvbGUiOiJBdXRob3IiLCJleHAiOjE3MjE5MjgwODIsImlhdCI6MTcyMTg0MTY4Mn0.0O5PevxWJtm0AOt6ijz9iLC8GE382lLw7VM_Sbh3t2k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Nayax Book007\",\r\n    \"author\": \"66a1185ff72579308b4eb819\",\r\n    \"summary\": \"In a universe where One Nayax.007\",\r\n    \"library\": \"66a11f3dec446511df5d9fd7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/books/66a12ba206d8e6e6ce4b17e0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"books",
+								"66a12ba206d8e6e6ce4b17e0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Borrowing",
+			"item": [
+				{
+					"name": "borrow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExN2MwZjcyNTc5MzA4YjRlYjgxMSIsInJvbGUiOiJCb3Jyb3dlciIsImV4cCI6MTcyMTkyNTQwMSwiaWF0IjoxNzIxODM5MDAxfQ.knIHLXuAUn3bH-4rZE_m_308_FZBzfose1vNgT_kl9E",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":\"66a12ba206d8e6e6ce4b17e0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/borrow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"borrow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "return",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTExN2MwZjcyNTc5MzA4YjRlYjgxMSIsInJvbGUiOiJCb3Jyb3dlciIsImV4cCI6MTcyMTkyNTQwMSwiaWF0IjoxNzIxODM5MDAxfQ.knIHLXuAUn3bH-4rZE_m_308_FZBzfose1vNgT_kl9E",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9000/api/return/66a12ba206d8e6e6ce4b17e0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"return",
+								"66a12ba206d8e6e6ce4b17e0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BookkeepingServiceAPI",
+			"value": "http://localhost:9000/api/"
+		}
+	]
+}
